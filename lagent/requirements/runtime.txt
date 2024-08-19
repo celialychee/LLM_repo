@@ -1,0 +1,16 @@
+arxiv
+distro
+filelock
+func_timeout
+griffe
+json5
+jsonschema
+jupyter
+jupyter_client
+phx-class-registry
+requests
+streamlit
+tiktoken
+timeout-decorator
+typing-extensions
+duckduckgo_search==5.3.1b1
