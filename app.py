@@ -7,6 +7,7 @@ import streamlit as st
 
 from lagent.actions import ActionExecutor, ArxivSearch, IPythonInterpreter
 from lagent.actions.weather import WeatherQuery
+from lagent.actions.itinerary import ItineraryPlan
 from lagent.agents.internlm2_agent import INTERPRETER_CN, META_CN, PLUGIN_CN, Internlm2Agent, Internlm2Protocol
 from lagent.llms.lmdeploy_wrapper import LMDeployClient
 from lagent.llms.meta_template import INTERNLM2_META as META
@@ -31,7 +32,8 @@ class SessionState:
 
         action_list = [
             ArxivSearch(),
-            WeatherQuery()
+            WeatherQuery(),
+            ItineraryPlan(),
         ]
         st.session_state['plugin_map'] = {
             action.name: action
@@ -71,7 +73,7 @@ class StreamlitUI:
             layout='wide',
             page_title='lagent-web',
             page_icon='./docs/imgs/lagent_icon.png')
-        st.header(':robot_face: :blue[Lagent] Web Demo ', divider='rainbow')
+        st.header(':robot_face: :blue[Lagent] Travel Planner ', divider='rainbow')
         st.sidebar.title('模型控制')
         st.session_state['file'] = set()
         st.session_state['ip'] = None
