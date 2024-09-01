@@ -22,7 +22,7 @@ class WebConfigs:
     # ENABLE_DIGITAL_HUMAN: bool = True  # True 启动 数字人，False 不启用
     # ENABLE_AGENT: bool = os.environ.get("ENABLE_AGENT", "true") == "true"  # True 启动 Agent，False 不启用
     ENABLE_ASR: bool = os.environ.get("ENABLE_ASR", "true") == "true"  # True 启动 语音转文字，False 不启用
-
+    ENABLE_RAG: bool = True
     # DISABLE_UPLOAD: bool = os.getenv("DISABLE_UPLOAD") == "true"
 
     # ==================================================================
@@ -56,7 +56,13 @@ class WebConfigs:
     # RAG_CONFIG_PATH: str = r"./configs/rag_config.yaml"
     # RAG_VECTOR_DB_DIR: str = r"./work_dirs/instruction_db"
     # PRODUCT_INSTRUCTION_DIR_GEN_DB_TMP: str = r"./work_dirs/instructions_gen_db_tmp"
-    # RAG_MODEL_DIR: str = r"./weights/rag_weights/"
+    RAG_MODEL_DIR: str = r"../../models/rag/"
+    # app
+    # RAG_MODEL_DIR: str = r"./models/rag/"
+    RAG_EMBEDDING_DIR: str = r"maidalun/bce-embedding-base_v1"
+    RAG_RERANKER_DIR: str = r"maidalun/bce-reranker-base_v1"
+    RAG_SILICONCLOUD_API_KEY: str = ""
+    RAG_API_RPM: int = 1000
 
     # ==================================================================
     #                               TTS 配置
@@ -102,11 +108,13 @@ class ApiConfig:
     # LLM_ROUTER_NAME: str = "llm" if USING_DOCKER_COMPOSE else "0.0.0.0"
     # BASE_ROUTER_NAME: str = "base" if USING_DOCKER_COMPOSE else "0.0.0.0"
     ASR_ROUTER_NAME: str = "0.0.0.0"
+    RAG_ROUTER_NAME: str = "0.0.0.0"
     LLM_ROUTER_NAME: str = "127.0.0.1"
     
     # TTS_URL: str = f"http://{TTS_ROUTER_NAME}:8001/tts"
     # DIGITAL_HUMAN_URL: str = f"http://{DIGITAL_ROUTER_NAME}:8002/digital_human"
     ASR_URL: str = f"http://{ASR_ROUTER_NAME}:8003/asr"
+    RAG_URL: str = f"http://{RAG_ROUTER_NAME}:8000/get_info"
     LLM_URL: str = f"http://{LLM_ROUTER_NAME}:23333"
     
     # CHAT_URL: str = f"http://{BASE_ROUTER_NAME}:8000/streamer-sales/chat"

@@ -1,0 +1,1 @@
+from .web_configs import WEB_CONFIGS
