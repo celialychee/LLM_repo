@@ -12,8 +12,10 @@ from primitive.embedder import Embedder
 from primitive.rpm import RPM
 
 import sys
-sys.path.append("../../")
-from server import WEB_CONFIGS
+# sys.path.append("../../")
+# from server import WEB_CONFIGS
+sys.path.append(os.getcwd())
+from server.web_configs import WEB_CONFIGS
 
 
 class LLMReranker:

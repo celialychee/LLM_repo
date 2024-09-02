@@ -351,7 +351,13 @@ def test_query(retriever: Retriever, sample: str = None):
         real_questions = [ 
             "圆明园背后有什么故事？",
             "黄鹤楼的历史背景是什么？",
-            "你能说说八达岭长城背后的故事吗？"
+            "你能说说八达岭长城背后的故事吗？",
+            "今天天气怎么样？",
+            "今天吃什么？",
+            "你真漂亮",
+            "用科研仪器需要注意什么？",
+            "啊，不是吧",
+            "你能干什么"
             ]
 
     table = Texttable()
@@ -390,9 +396,9 @@ def gen_vector_db(config_path, source_dir, work_dir, test_mode=False, update_thr
         # if retriever.kg.is_available():
         #     start_llm_server(args.config_path)
 
-        with open(os.path.join('resource', 'good_questions.json')) as f:
+        with open(os.path.join('./server/rag/', 'resource', 'good_questions.json')) as f:
             good_questions = json.load(f)
-        with open(os.path.join('resource', 'bad_questions.json')) as f:
+        with open(os.path.join('./server/rag/', 'resource', 'bad_questions.json')) as f:
             bad_questions = json.load(f)
         retriever.update_throttle(config_path=config_path,
                                 good_questions=good_questions,
@@ -409,19 +415,19 @@ def gen_vector_db(config_path, source_dir, work_dir, test_mode=False, update_thr
 def parse_args():
     """Parse command-line arguments."""
     parser = argparse.ArgumentParser(description="Feature store for processing directories.")
-    parser.add_argument("--work_dir", type=str, default="work_dir", help="Working directory.")
-    parser.add_argument("--repo_dir", type=str, default="repo_dir", help="Root directory where the repositories are located.")
+    parser.add_argument("--work_dir", type=str, default="./server/rag/work_dir", help="Working directory.")
+    parser.add_argument("--repo_dir", type=str, default="./server/rag/repo_dir", help="Root directory where the repositories are located.")
     parser.add_argument(
-        "--config_path", default="config.ini", help="Feature store configuration path. Default value is config.ini"
+        "--config_path", default="./server/rag/config.ini", help="Feature store configuration path. Default value is config.ini"
     )
     parser.add_argument(
         "--good_questions",
-        default="resource/good_questions.json",
+        default="./server/rag/resource/good_questions.json",
         help="Positive examples in the dataset. Default value is resource/good_questions.json",  # noqa E251  # noqa E501
     )
     parser.add_argument(
         "--bad_questions",
-        default="resource/bad_questions.json",
+        default="./server/rag/resource/bad_questions.json",
         help="Negative examples json path. Default value is resource/bad_questions.json",  # noqa E251  # noqa E501
     )
     parser.add_argument(

@@ -21,10 +21,12 @@ class Retriever:
     """Tokenize and extract features from the project's chunks, for use in the
     reject pipeline and response pipeline."""
 
-    def __init__(self, config_path: str, embedder: Any, reranker: Any,
+    # def __init__(self, config_path: str, embedder: Any, reranker: Any,
+    #              work_dir: str, reject_throttle: float) -> None:
+    def __init__(self, embedder: Any, reranker: Any,
                  work_dir: str, reject_throttle: float) -> None:
         """Init with model device type and config."""
-        self.config_path = config_path
+        # self.config_path = config_path
         self.reject_throttle = reject_throttle
 
         self.embedder = embedder
@@ -280,7 +282,7 @@ class CacheRetriever:
     def get(self,
             fs_id: str = 'default',
             config_path='config.ini',
-            work_dir='workdir'):
+            work_dir='work_dir'):
         """Get database by id."""
 
         if fs_id in self.cache:
@@ -306,8 +308,8 @@ class CacheRetriever:
                 self.cache.pop(del_key)
                 del del_value['retriever']
 
-        retriever = Retriever(config_path=config_path,
-                              embedder=self.embedder,
+        # retriever = Retriever(config_path=config_path,
+        retriever = Retriever(embedder=self.embedder,
                               reranker=self.reranker,
                               work_dir=work_dir,
                               reject_throttle=reject_throttle)

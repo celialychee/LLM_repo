@@ -56,13 +56,16 @@ class WebConfigs:
     # RAG_CONFIG_PATH: str = r"./configs/rag_config.yaml"
     # RAG_VECTOR_DB_DIR: str = r"./work_dirs/instruction_db"
     # PRODUCT_INSTRUCTION_DIR_GEN_DB_TMP: str = r"./work_dirs/instructions_gen_db_tmp"
-    RAG_MODEL_DIR: str = r"../../models/rag/"
+    # RAG_MODEL_DIR: str = r"../../models/rag/"
     # app
-    # RAG_MODEL_DIR: str = r"./models/rag/"
+    RAG_MODEL_DIR: str = r"./models/rag/"
     RAG_EMBEDDING_DIR: str = r"maidalun/bce-embedding-base_v1"
     RAG_RERANKER_DIR: str = r"maidalun/bce-reranker-base_v1"
     RAG_SILICONCLOUD_API_KEY: str = ""
     RAG_API_RPM: int = 1000
+    RAG_CONFIG_PATH: str = r"./server/rag/config.ini"
+    RAG_REPO_DIR: str = r"./server/rag/repo_dir"
+    RAG_WORK_DIR: str = r"./server/rag/work_dir"
 
     # ==================================================================
     #                               TTS 配置
