@@ -32,13 +32,18 @@ https://github.com/InternLM/Tutorial
 ``pip install -r requirements.txt``
 
 ## ASR模型下载
-运行``/root/lizhenyu/LLM_repo/requirements/asr/models_download.sh``
+运行``/path/to/LLM_repo/requirements/asr/models_download.sh``
+
+## RAG模型下载
+运行``/path/to/LLM_repo/requirements/rag/models_download.sh``
 
 ## 模型部署
 ```sh
 conda activate agent
 # 启用ASR
 uvicorn server.asr.asr_server:app --host 0.0.0.0 --port 8003
+# 启用RAG
+uvicorn server.rag.rag_server:app --host 0.0.0.0 --port 8000
 
 # 部署模型
 lmdeploy serve api_server /root/share/new_models/Shanghai_AI_Laboratory/internlm2_5-7b-chat --model-name internlm2_5-7b-chat \
