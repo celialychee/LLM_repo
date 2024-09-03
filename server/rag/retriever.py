@@ -11,9 +11,9 @@ import pytoml
 from loguru import logger
 from sklearn.metrics import precision_recall_curve
 
-from primitive import Embedder, Faiss, LLMReranker, Query, Chunk
+from .primitive import Embedder, Faiss, LLMReranker, Query, Chunk
 
-from primitive import FileOperation
+from .primitive import FileOperation
 # from .helper import QueryTracker
 # from .kg import KnowledgeGraph
 
@@ -42,6 +42,7 @@ class Retriever:
 
         # dense retrieval, load refusal-to-answer and response feature database
         dense_path = os.path.join(work_dir, 'db_dense')
+        print("dense_path", dense_path)
         if not os.path.exists(dense_path):
             logger.warning('retriever is None, skip load faiss')
             self.faiss = None

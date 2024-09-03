@@ -53,11 +53,6 @@ class WebConfigs:
     # ==================================================================
     #                               RAG 配置
     # ==================================================================
-    # RAG_CONFIG_PATH: str = r"./configs/rag_config.yaml"
-    # RAG_VECTOR_DB_DIR: str = r"./work_dirs/instruction_db"
-    # PRODUCT_INSTRUCTION_DIR_GEN_DB_TMP: str = r"./work_dirs/instructions_gen_db_tmp"
-    # RAG_MODEL_DIR: str = r"../../models/rag/"
-    # app
     RAG_MODEL_DIR: str = r"./models/rag/"
     RAG_EMBEDDING_DIR: str = r"maidalun/bce-embedding-base_v1"
     RAG_RERANKER_DIR: str = r"maidalun/bce-reranker-base_v1"
@@ -117,7 +112,7 @@ class ApiConfig:
     # TTS_URL: str = f"http://{TTS_ROUTER_NAME}:8001/tts"
     # DIGITAL_HUMAN_URL: str = f"http://{DIGITAL_ROUTER_NAME}:8002/digital_human"
     ASR_URL: str = f"http://{ASR_ROUTER_NAME}:8003/asr"
-    RAG_URL: str = f"http://{RAG_ROUTER_NAME}:8000/get_info"
+    RAG_URL: str = f"http://{RAG_ROUTER_NAME}:8000/rag"
     LLM_URL: str = f"http://{LLM_ROUTER_NAME}:23333"
     
     # CHAT_URL: str = f"http://{BASE_ROUTER_NAME}:8000/streamer-sales/chat"

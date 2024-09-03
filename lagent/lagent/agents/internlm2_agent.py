@@ -283,6 +283,7 @@ class Internlm2Agent(BaseAgent):
         return agent_return
 
     def stream_chat(self, message: List[dict], **kwargs) -> AgentReturn:
+        # 如果消息是字符串，则需要包装成能够输入的字典格式
         if isinstance(message, str):
             message = dict(role='user', content=message)
         if isinstance(message, dict):

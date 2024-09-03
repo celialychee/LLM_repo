@@ -19,7 +19,7 @@ from audiorecorder import audiorecorder
 from server.web_configs import WEB_CONFIGS, API_CONFIG
 from pathlib import Path
 from utils.tools import delete_old_files
-from utils.api import get_asr_api
+from utils.api import get_asr_api, get_rag_api
 from datetime import datetime
 
 
@@ -280,7 +280,7 @@ def main():
             layout='wide',
             page_title='lagent-web',
             page_icon='./docs/imgs/lagent_icon.png')
-        st.header(':robot_face: :blue[Lagent] Web Demo ', divider='rainbow')
+        st.header(':robot_face: :blue[Lagent] Travel Planner', divider='rainbow')
     vars_list = st.session_state[
         'ui'].setup_sidebar()
     if len(vars_list)==5:
@@ -345,6 +345,8 @@ def main():
         if isinstance(user_input, str):
             user_input = [dict(role='user', content=user_input)]
         st.session_state['last_status'] = AgentStatusCode.SESSION_READY
+        # 先采用RAG查看是否能检索到相似文本
+        user_input = get_rag_api(user_input)
         for agent_return in st.session_state['chatbot'].stream_chat(
                 st.session_state['session_history'] + user_input):
             if agent_return.state == AgentStatusCode.PLUGIN_RETURN:

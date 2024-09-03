@@ -4,7 +4,7 @@ from pathlib import Path
 import torch
 import yaml
 
-from ....web_configs import WEB_CONFIGS
+from ..web_configs import WEB_CONFIGS
 from .feature_store import gen_vector_db
 from .retriever import CacheRetriever
 
@@ -77,6 +77,7 @@ def gen_rag_db(force_gen=False):
 
 def load_rag_model():
     # 生成 rag 数据库
+    # gen_rag_db(True)
     gen_rag_db()
     # 加载 rag 模型
     retriever = init_rag_retriever(rag_config=WEB_CONFIGS.RAG_CONFIG_PATH, db_path=WEB_CONFIGS.RAG_WORK_DIR)

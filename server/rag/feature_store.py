@@ -14,12 +14,12 @@ from loguru import logger
 from torch.cuda import empty_cache
 from tqdm import tqdm
 
-from primitive import (ChineseRecursiveTextSplitter, Chunk, Embedder, Faiss,
+from .primitive import (ChineseRecursiveTextSplitter, Chunk, Embedder, Faiss,
                          FileName, FileOperation,
                          RecursiveCharacterTextSplitter, nested_split_markdown)
 # from .helper import histogram
 # from .llm_server_hybrid import start_llm_server
-from retriever import CacheRetriever, Retriever
+from .retriever import CacheRetriever, Retriever
 
 from server import WEB_CONFIGS
 

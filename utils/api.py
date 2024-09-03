@@ -20,3 +20,17 @@ def get_asr_api(wav_path, user_id="123"):
 
     res = requests.post(API_CONFIG.ASR_URL, json=req_data).json()
     return res["result"]
+
+
+def get_rag_api(prompt, user_id="123"):
+    # 获取RAG结果
+    req_data = {
+        "user_id": user_id,
+        "request_id": str(uuid.uuid1()),
+        "prompt": prompt
+    }
+
+    print(req_data)
+
+    res = requests.post(API_CONFIG.RAG_URL, json=req_data).json()
+    return res["result"]

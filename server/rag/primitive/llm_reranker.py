@@ -7,9 +7,9 @@ from typing import List, Tuple
 
 import numpy as np
 
-from primitive.chunk import Chunk
-from primitive.embedder import Embedder
-from primitive.rpm import RPM
+from .chunk import Chunk
+from .embedder import Embedder
+from .rpm import RPM
 
 import sys
 # sys.path.append("../../")

@@ -13,8 +13,8 @@ import numpy as np
 from loguru import logger
 from tqdm import tqdm
 
-from primitive.embedder import Embedder
-from primitive.query import Query, DistanceStrategy
+from .embedder import Embedder
+from .query import Query, DistanceStrategy
 
 
 # heavily modified from langchain

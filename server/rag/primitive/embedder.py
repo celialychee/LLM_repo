@@ -9,8 +9,8 @@ from typing import Any, List
 
 import numpy as np
 from loguru import logger
-from primitive.query import DistanceStrategy
-from primitive.rpm import RPM
+from .query import DistanceStrategy
+from .rpm import RPM
 
 import sys
 # sys.path.append("../../")

@@ -83,7 +83,7 @@ class ItineraryPlan(BaseAction):
     
     @tool_api
     def get_walking_route(self, src_lon: float, src_lat: float, des_lon: float, des_lat: float):
-        """一个旅行规划查询API。可以根据出发地、目的地名以及出行偏好查询经纬度信息。
+        """一个景点步行路线查询API。可以根据出发景点、目的景点位置查询步行线路。
         
         Args:
             src_lon (:class:`float`): the origin longitude.
@@ -137,7 +137,7 @@ class ItineraryPlan(BaseAction):
     
     @tool_api
     def get_bus_route(self, src_lon: float, src_lat: float, src_city: str, des_lon: float, des_lat: float, des_city: str):
-        """一个旅行规划查询API。可以根据出发地、目的地名以及出行偏好查询经纬度信息。
+        """一个景点公交路线查询API。可以根据出发景点、目的景点名称以及位置查询公交线路。
         
         Args:
             src_lon (:class:`double`): the origin longitude.

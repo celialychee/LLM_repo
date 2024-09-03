@@ -16,6 +16,16 @@ https://github.com/InternLM/Tutorial
 - [2024.09.03] 📣支持RAG生成准确历史文化背景故事
 - [2024.08.25] 📣根据天气偏好生成旅游规划及路线
 
+# 🖥显存资源占用情况🖥 #
+
+| Name | Resource(GB) |
+| -- | -- |
+| ASR | 2.56 |
+| RAG | 2.52 |
+| InterLM | 15.90 |
+| WebUI | 8.42 |
+| TOTAL | 29.40 |
+
 # ⭐使用说明⭐
 
 ## 环境配置

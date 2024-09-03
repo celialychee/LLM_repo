@@ -32,11 +32,11 @@ class WeatherQuery(BaseAction):
 
 
     @tool_api
-    def run(self, query: str, days: int) -> ActionReturn:
+    def run(self, city: str, days: int) -> ActionReturn:
         """一个天气查询API。可以根据城市名查询天气信息。
         
         Args:
-            query (:class:`str`): The city name to query.
+            city (:class:`str`): The city name to query.
             days (:class:`int`): The number of days to query (1, 3, 7, or 10).
         """
         tool_return = ActionReturn(type=self.name)
@@ -45,7 +45,7 @@ class WeatherQuery(BaseAction):
             tool_return.state = ActionStatusCode.API_ERROR
             return tool_return
 
-        status_code, response = self._search(query, days)
+        status_code, response = self._search(city, days)
         if status_code == -1:
             tool_return.errmsg = response
             tool_return.state = ActionStatusCode.HTTP_ERROR

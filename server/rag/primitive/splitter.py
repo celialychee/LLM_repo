@@ -15,8 +15,8 @@ from typing import (AbstractSet, Any, Callable, Collection, Dict, Iterable,
 
 from loguru import logger
 
-from primitive.chunk import Chunk
-from primitive.file_operation import FileOperation
+from .chunk import Chunk
+from .file_operation import FileOperation
 
 
 class LineType(TypedDict):
