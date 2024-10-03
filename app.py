@@ -8,6 +8,7 @@ import streamlit as st
 from lagent.actions import ActionExecutor, ArxivSearch, IPythonInterpreter
 from lagent.actions.weather import WeatherQuery
 from lagent.actions.itinerary import ItineraryPlan
+from lagent.actions.google_search import GoogleSearch
 from lagent.agents.internlm2_agent import INTERPRETER_CN, META_CN, PLUGIN_CN, Internlm2Agent, Internlm2Protocol
 from lagent.llms.lmdeploy_wrapper import LMDeployClient
 from lagent.llms.meta_template import INTERNLM2_META as META
@@ -31,7 +32,7 @@ class SessionState:
         st.session_state['user'] = []
 
         action_list = [
-            ArxivSearch(),
+            GoogleSearch(),
             WeatherQuery(),
             ItineraryPlan(),
         ]

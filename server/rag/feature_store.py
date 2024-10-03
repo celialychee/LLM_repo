@@ -155,33 +155,6 @@ class FeatureStore:
         # self.analyze(filtered_chunks)
         Faiss.save_local(folder_path=feature_dir, chunks=filtered_chunks, embedder=self.embedder)
 
-    # def analyze(self, chunks: List[Chunk]):
-    #     """Output documents length mean, median and histogram."""
-
-    #     # text_lens = []
-    #     # token_lens = []
-    #     # text_chunk_count = 0
-    #     # image_chunk_count = 0
-
-    #     # if self.embedder is None:
-    #     #     logger.info('self.embedder is None, skip `anaylze_output`')
-    #     #     return
-    #     # for chunk in chunks:
-    #     #     if chunk.modal == 'image':
-    #     #         image_chunk_count += 1
-    #     #     elif chunk.modal == 'text':
-    #     #         text_chunk_count += 1
-
-    #     #     content = chunk.content_or_path
-    #     #     text_lens.append(len(content))
-    #     #     token_lens.append(self.embedder.token_length(content))
-
-    #     # logger.info('text_chunks {}, image_chunks {}'.format(text_chunk_count, image_chunk_count))
-    #     # logger.info('text histogram, {}'.format(histogram(text_lens)))
-    #     # logger.info('token histogram, {}'.format(
-    #     #     histogram(token_lens)))
-    #     pass
-
     def preprocess(self, files: List, work_dir: str):
         """Preprocesses files in a given directory. Copies each file to
         'preprocess' with new name formed by joining all subdirectories with
@@ -264,46 +237,6 @@ class FeatureStore:
         self.preprocess(files=files, work_dir=work_dir)
         # build dense retrieval refusal-to-answer and response database
         self.build_dense(files=files, work_dir=work_dir)
-
-
-# def parse_args():
-#     """Parse command-line arguments."""
-#     parser = argparse.ArgumentParser(
-#         description='Feature store for processing directories.')
-#     parser.add_argument('--work_dir',
-#                         type=str,
-#                         default='workdir',
-#                         help='Working directory.')
-#     parser.add_argument(
-#         '--repo_dir',
-#         type=str,
-#         default='repodir',
-#         help='Root directory where the repositories are located.')
-#     parser.add_argument(
-#         '--config_path',
-#         default='config.ini',
-#         help='Feature store configuration path. Default value is config.ini')
-#     parser.add_argument(
-#         '--good_questions',
-#         default='resource/good_questions.json',
-#         help=  # noqa E251
-#         'Positive examples in the dataset. Default value is resource/good_questions.json'  # noqa E501
-#     )
-#     parser.add_argument(
-#         '--bad_questions',
-#         default='resource/bad_questions.json',
-#         help=  # noqa E251
-#         'Negative examples json path. Default value is resource/bad_questions.json'  # noqa E501
-#     )
-#     parser.add_argument(
-#         '--sample', help='Input an json file, save reject and search output.')
-#     parser.add_argument(
-#         '--override',
-#         action='store_true',
-#         default=False,
-#         help='Remove old data and rebuild knowledge graph from scratch.')
-#     args = parser.parse_args()
-#     return args
 
 def test_reject(retriever: Retriever, sample: str = None):
     """Simple test reject pipeline."""

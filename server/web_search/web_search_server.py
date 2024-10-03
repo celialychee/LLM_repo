@@ -8,7 +8,7 @@ from fastapi import FastAPI, HTTPException, Response
 from loguru import logger
 
 from ..web_configs import WEB_CONFIGS
-from .rag_worker import RAG_RETRIEVER, build_rag_prompt
+from .web_search_worker import HotQuery
 
 from pydantic import BaseModel
 
@@ -21,25 +21,26 @@ class ChatItem(BaseModel):
     request_id: str  # 请求 ID，用于生成 TTS & 数字人
     prompt: List[Dict[str, str]]  # 本次的 prompt
 
-@app.post("/rag")
-async def get_rag(chat_item: ChatItem):
+@app.post("/search_hot")
+async def get_search_hot(chat_item: ChatItem):
     # 获取用户原始输入
     status = "fail"
     raw_prompt = chat_item.prompt[-1]["content"]
     logger.info(f"raw_prompt: {raw_prompt}")
-    rag_prompt = build_rag_prompt(RAG_RETRIEVER, raw_prompt)
+    hot_query = HotQuery(llm, 'zh')
+    web_prompt = hot_query.process(raw_prompt)
     
-    # 如果RAG回答了该问题则结合RAG检索到的上下文和用户原始提问结合到一起
-    if rag_prompt != "":
+    # 如果判断为需要搜索的问题,就把搜索得出来的结果结合原问题一起作为输入
+    if web_prompt:
         status = "success"
-        chat_item.prompt[-1]["content"] = rag_prompt
-    logger.info(f"rag_prompt: {rag_prompt}")
+        chat_item.prompt[-1]["content"] = web_prompt
+    logger.info(f"web_prompt: {web_prompt}")
     chat_prompt = chat_item.prompt[-1]["content"]
     logger.info(f"chat_item.prompt: {chat_prompt}")
     
     return {"user_id": chat_item.user_id, "request_id": chat_item.request_id, "status": status, "result": chat_item.prompt}
 
 
-@app.get("/rag/check")
+@app.get("/search_hot/check")
 async def check_server():
     return {"message": "server enabled"}

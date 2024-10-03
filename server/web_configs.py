@@ -23,6 +23,7 @@ class WebConfigs:
     # ENABLE_AGENT: bool = os.environ.get("ENABLE_AGENT", "true") == "true"  # True 启动 Agent，False 不启用
     ENABLE_ASR: bool = os.environ.get("ENABLE_ASR", "true") == "true"  # True 启动 语音转文字，False 不启用
     ENABLE_RAG: bool = True
+    ENABLE_SEARCH: bool = True
     # DISABLE_UPLOAD: bool = os.getenv("DISABLE_UPLOAD") == "true"
 
     # ==================================================================

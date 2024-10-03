@@ -243,36 +243,3 @@ class FileOperation:
         text = text.replace('  ', ' ')
         text = text.replace('  ', ' ')
         return text, None
-
-
-# if __name__ == '__main__':
-
-#     def get_pdf_files(directory):
-#         pdf_files = []
-#         # 遍历目录
-#         for root, dirs, files in os.walk(directory):
-#             for file in files:
-#                 # 检查文件扩展名是否为.pdf
-#                 if file.lower().endswith('.pdf'):
-#                     # 将完整路径添加到列表中
-#                     pdf_files.append(os.path.abspath(os.path.join(root, file)))
-#         return pdf_files
-
-#     # 将你想要搜索的目录替换为下面的路径
-#     pdf_list = get_pdf_files(
-#         '/home/khj/huixiangdou-web-online-data/hxd-bad-file')
-
-#     # 打印所有找到的PDF文件的绝对路径
-
-#     opr = FileOperation()
-#     for pdf_path in pdf_list:
-#         text, error = opr.read(pdf_path)
-#         print('processing {}'.format(pdf_path))
-#         if error is not None:
-#             print('')
-
-#         else:
-#             if text is not None:
-#                 print(len(text))
-#             else:
-#                 print('')
